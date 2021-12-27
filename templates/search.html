@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block extra_style %}
+
+
+{% endblock %}
+{% block content %}
+    <main>
+
+        {% include 'slider.html' with slider=slider %}
+
+        <!--Blog section-->
+        <section>
+            <div class="container-fluid grey lighten-4">
+                <hr class="">
+                <div class="container">
+
+                    <!--Blog-->
+                    <div class="row ">
+
+                        <!--Main listing-->
+                        <div class="col-lg-8 col-12 mt-1 mx-lg-4">
+                            <h2>This is search result</h2>
+                            <hr>
+                            {% for post in queryset %}
+                            <h4><a href="{{post.get_absolute_url}}">{{post.title}}</a></h4><br>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                    <!--Blog-->
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+{% endblock %}
+    

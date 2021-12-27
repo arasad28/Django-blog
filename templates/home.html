@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block extra_style %}
+
+
+{% endblock %}
+{% block content %}
+    <main>
+
+        {% include 'slider.html' with slider=slider %}
+
+        <!--Blog section-->
+        <section>
+            <div class="container-fluid grey lighten-4">
+                <hr class="">
+                <div class="container">
+
+                    <!--Blog-->
+                    <div class="row ">
+
+                        <!--Main listing-->
+                        <div class="col-lg-8 col-12 mt-1 mx-lg-4">
+
+                            <!--Section: Blog v.3-->
+                            <section class="section extra-margins pb-3 text-center text-lg-left">
+                                {% for objects in queryset %}
+                                <div class="row mb-4">
+
+                                    <!--Grid column-->
+                                    <div class="col-md-12">
+                                        <!--Card-->
+                                        <div class="card">
+
+                                            <!--Card image-->
+                                            <div class="view overlay">
+                                              
+                                                <img src="{{objects.thumbnail_img.url}}" class="card-img-top" alt="">
+                                                <a href="{{objects.get_absolute_url}}">
+                                                    <div class="mask rgba-white-slight"></div>
+                                                </a>
+                                            </div>
+                                            <!--/.Card image-->
+
+                                            <!--Card content-->
+                                            <div class="card-body mx-4">
+                                                <!--Title-->
+                                                <h4 class="card-title">
+                                                    <strong>{{objects.title}}</strong>
+                                                </h4>
+                                                <hr>
+                                                <!--Text-->
+                                                <p class="dark-grey-text mb-3">{{objects.overview}}
+                                                    </p>
+                                                </p>
+                                                <p class="font-small font-weight-bold blue-grey-text mb-1">
+                                                    <i class="far fa-clock-o"></i>{{objects.timestamp|date:"SHORT_DATE_FORMAT"}}  </p>
+                                                <p class="font-small dark-grey-text mb-0 font-weight-bold">{{objects.author.user}}</p>
+                                                <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
+                                                    <a href="{{objects.get_absolute_url}}">read more
+                                                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <!--/.Card content-->
+
+                                        </div>
+                                        <!--/.Card-->
+
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                {% endfor %}
+                            </section>
+                            <!--Section: Blog v.3-->
+
+                            <!--Pagination dark grey-->
+                            <nav class="mb-5 pb-2">
+                                <ul class="pagination pg-darkgrey flex-center">
+                                    <!--Arrow left-->
+                                    {% if queryset.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?{{page_request_var}}={{queryset.previous_page_number}}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+
+                    
+                                    <li class="page-item active">
+                                        <a href="?{{page_request_var}}={{queryset.number}}" class="page-link">{{queryset.number}}</a>
+                                    </li>
+
+                                    <!--Arrow right-->
+                                    {% if queryset.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?{{page_request_var}}={{queryset.next_page_number}}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                            <!--Pagination dark grey-->
+
+                        </div>
+                        <!--Main listing-->
+
+                        <!--Sidebar-->
+                        {% include 'sidebar.html' with category_count=category_count %}
+                        <!--Sidebar-->
+
+                    </div>
+                    <!--Blog-->
+
+                </div>
+
+            </div>
+
+        </section>
+        <!--Blog section-->
+
+        <!--Latest posts-->
+        {% include 'footer_top.html' with older=older latest=latest popular=popular trends=trends %}
+        <!--/Latest posts-->
+
+    </main>
+{% endblock %}
+    

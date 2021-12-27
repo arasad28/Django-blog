@@ -1,0 +1,150 @@
+<section>
+    <div class="container-fluid white mb-0 pb-0">
+        <hr class="mt-0">
+        <div class="container">
+            <!--Grid row-->
+            <div class="row">
+
+
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="font-weight-bold mt-5 mb-3">TRENDING POSTS</h6>
+                    <hr class="mb-5">
+                    {% for object in trends %}
+                    <div class="row mt-4">
+
+                        <!--Grid column-->
+                        <div class="col-4">
+
+                            <!--Image-->
+                            <div class="view overlay z-depth-1 mb-3">
+                                <img src="{{object.thumbnail_img.url}}" class="img-fluid" alt="Post">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Second column-->
+                        <div class="col-8 mb-1">
+
+                            <!--Post data-->
+                            <div class="">
+                                <p class="mb-1">
+                                    <a href="#!" class="text-hover font-weight-bold">{{object.title}}</a>
+                                </p>
+                                <p class="font-small grey-text">
+                                    <em>{{object.timestamp|date:'d M Y'}}</em>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--Second column-->
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="font-weight-bold mt-5 mb-3">LATESTS POSTS</h6>
+                    <hr class="mb-5">
+                    {% for object in latest %}
+                    <div class="row mt-4">
+
+                        <!--Grid column-->
+                        <div class="col-4">
+
+                            <!--Image-->
+                            <div class="view overlay z-depth-1 mb-3">
+                                <img src="{{object.thumbnail_img.url}}" class="img-fluid" alt="Post">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Second column-->
+                        <div class="col-8 mb-1">
+
+                            <!--Post data-->
+                            <div class="">
+                                <p class="mb-1">
+                                    <a href="#!" class="text-hover font-weight-bold">{{object.title}}</a>
+                                </p>
+                                <p class="font-small grey-text">
+                                    <em>{{object.timestamp|date:'d M Y'}}</em>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--Second column-->
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4  col-md-6">
+                    <h6 class="font-weight-bold mt-5 mb-3">OLDER POSTS</h6>
+                    <hr class="mb-5">
+
+                    <!--Grid row-->
+                {% for object in older %}
+                    <div class="row mt-4">
+
+                        <!--Grid column-->
+                        <div class="col-4">
+
+                            <!--Image-->
+                            <div class="view overlay z-depth-1 mb-3">
+                                <img src="{{object.thumbnail_img.url}}" class="img-fluid" alt="Post">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Second column-->
+                        <div class="col-8 mb-1">
+
+                            <!--Post data-->
+                            <div class="">
+                                <p class="mb-1">
+                                    <a href="#!" class="text-hover font-weight-bold">{{object.title}}</a>
+                                </p>
+                                <p class="font-small grey-text">
+                                    <em>{{object.timestamp|date:'d M Y'}}</em>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--Second column-->
+
+                    </div>
+                    {% endfor %}
+                    <!--Grid row-->
+
+
+
+                </div>
+                
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+    </div>
+
+</section>
